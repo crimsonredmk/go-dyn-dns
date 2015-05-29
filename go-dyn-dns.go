@@ -37,11 +37,9 @@ func logErrorThenExit(err error) {
 func main() {
 	publicIP, err := getPublicIP()
 	logErrorThenExit(err)
-
 	fmt.Printf("%s\n", publicIP)
 
 	route53Client, err := connectToRoute53()
 	logErrorThenExit(err)
-
 	fmt.Printf("%s\n", route53Client.Endpoint)
 }
