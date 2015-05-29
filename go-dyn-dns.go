@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	// "github.com/awslabs/aws-sdk-go/aws"
-	// "github.com/awslabs/aws-sdk-go/service/route53"
+	"github.com/goamz/goamz/aws"
+	"github.com/goamz/goamz/route53"
 )
 
 func getPublicIP() ([]byte, error) {
@@ -17,6 +17,14 @@ func getPublicIP() ([]byte, error) {
 		return nil, err
 	}
 	return ioutil.ReadAll(res.Body)
+}
+
+func connectToRoute53() (*route53.Route53, error) {
+	auth := aws.Auth{
+		AccessKey: "ASDFASDFASDFASDK",
+		SecretKey: "DSFSDFDWESDADSFASDFADFDSFASDF",
+	}
+	return route53.NewRoute53(auth)
 }
 
 func logErrorThenExit(err error) {
@@ -31,4 +39,9 @@ func main() {
 	logErrorThenExit(err)
 
 	fmt.Printf("%s\n", publicIP)
+
+	route53Client, err := connectToRoute53()
+	logErrorThenExit(err)
+
+	fmt.Printf("%s\n", route53Client.Endpoint)
 }
