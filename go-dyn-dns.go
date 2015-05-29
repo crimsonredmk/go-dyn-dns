@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	// "github.com/awslabs/aws-sdk-go/aws"
+	// "github.com/awslabs/aws-sdk-go/service/route53"
 )
 
 func getPublicIP() ([]byte, error) {
@@ -17,12 +19,16 @@ func getPublicIP() ([]byte, error) {
 	return ioutil.ReadAll(res.Body)
 }
 
-func main() {
-	publicIP, err := getPublicIP()
-
+func logErrorThenExit(err error) {
 	if err != nil {
 		log.Fatal(err)
 		os.Exit(1)
 	}
+}
+
+func main() {
+	publicIP, err := getPublicIP()
+	logErrorThenExit(err)
+
 	fmt.Printf("%s\n", publicIP)
 }
