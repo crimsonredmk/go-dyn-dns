@@ -53,7 +53,7 @@ func updateRoute53Record(publicIP string, configMap *config, route53Client *rout
 	basicRRS := route53.BasicResourceRecordSet{Action: "UPSERT", Name: configMap.SUBDOMAIN, Type: "A", TTL: 60, Values: rrv}
 	RRSSlice := []route53.ResourceRecordSet{route53.ResourceRecordSet(basicRRS)}
 	createRequest := route53.ChangeResourceRecordSetsRequest{Changes: RRSSlice, Xmlns: "https://route53.amazonaws.com/doc/2013-04-01/"}
-	
+
 	return route53Client.ChangeResourceRecordSet(&createRequest, configMap.HOSTED_ZONE_ID)
 }
 
@@ -67,17 +67,14 @@ func logErrorThenExit(err error) {
 func main() {
 	publicIP, err := getPublicIP()
 	logErrorThenExit(err)
-	fmt.Printf("%s\n", publicIP)
 
 	configMap, err := readConfigFile()
 	logErrorThenExit(err)
-	fmt.Printf("%s\n", configMap.HOSTED_ZONE_ID)
 
 	route53Client, err := connectToRoute53(configMap.AWS_ACCESS_KEY, configMap.AWS_SECRET_ACCESS_KEY)
 	logErrorThenExit(err)
-	fmt.Printf("%s\n", route53Client.Endpoint)
 
 	_, err = updateRoute53Record(string(publicIP), configMap, route53Client)
 	logErrorThenExit(err)
-	fmt.Println("All done!")
+	fmt.Printf("Successfully mapped %s to IP %s.\n", configMap.SUBDOMAIN, publicIP)
 }
