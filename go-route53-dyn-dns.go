@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"flag"
 	"github.com/goamz/goamz/aws"
 	"github.com/goamz/goamz/route53"
 	"encoding/json"
@@ -18,8 +19,8 @@ type config struct {
 	SUBDOMAIN string
 }
 
-func readConfigFile() (*config, error) {
-	fileContent, err := ioutil.ReadFile("/etc/go-dyn-dns-conf.json")
+func readConfigFile(configFileLocation string) (*config, error) {
+	fileContent, err := ioutil.ReadFile(configFileLocation)
 	logErrorThenExit(err)
 
 	res := &config{}
@@ -65,10 +66,13 @@ func logErrorThenExit(err error) {
 }
 
 func main() {
+	configFileLocation := flag.String("c", "/etc/go-route53-dyn-dns-conf.json", "configuration file location")
+	flag.Parse()
+
 	publicIP, err := getPublicIP()
 	logErrorThenExit(err)
 
-	configMap, err := readConfigFile()
+	configMap, err := readConfigFile(*configFileLocation)
 	logErrorThenExit(err)
 
 	route53Client, err := connectToRoute53(configMap.AWS_ACCESS_KEY, configMap.AWS_SECRET_ACCESS_KEY)

@@ -16,7 +16,7 @@ A simple command to update AWS Route53 with a your device's public IP address.
 
 # Configuration #
 
-Create a configuration file at `/etc/go-dyn-dns-conf.json` with contents:
+Create a configuration file at `/etc/go-route53-dyn-dns-conf.json` with contents:
 
     {
         "AWS_ACCESS_KEY": "YOUR_ACCESS_KEY",
