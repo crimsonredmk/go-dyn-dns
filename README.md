@@ -30,3 +30,17 @@ Create a configuration file at `/etc/go-route53-dyn-dns-conf.json` with contents
 Once your configuration file is ready, just run go-route53-dyn-dns. If successful, the following will be printed:
 
     Successfully mapped mysubdomain.mydomain.com to IP 55.44.33.22.
+
+# Running on Boot - Ubuntu 14.04 LTS #
+
+To run the script on boot once the network is up, create the file `/etc/init/go-route53-dyn-dns.conf` and paste these contents into it:
+
+    description "go-route53-dyn-dns"
+
+    start on net-device-up IFACE=eth0
+
+    script
+        /usr/local/bin/go-route53-dyn-dns
+    end script
+
+Remember to replace the location of `go-route53-dyn-dns`.
