@@ -1,18 +1,18 @@
 # go-route53-dyn-dns #
 
-A simple command to update AWS Route53 with a your device's public IP address.
+A simple command to update AWS Route53 with a device's public IP address.
 
 # Uses #
 
-* On boot of an EC2 instance, update the A record of a subdomain to point to the new IP address.
-* Your own dynamic DNS for a home computer.
+* On boot of an EC2 instance, update the A record of a (sub)domain to point to the new IP address.
+* Your own dynamic DNS.
 
 # Requirements #
 
-* Linux, Mac OS X, BSD. Windows is untested.
+* Linux. Windows, OS X, and BSD are untested.
 * An internet connection and a public IP address.
 * An AWS account.
-* An existing hosted zone in Route53.
+* An existing hosted zone in AWS Route53.
 
 # Configuration #
 
