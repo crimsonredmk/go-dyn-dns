@@ -1,0 +1,6 @@
+package: github.com/crimsonredmk/go-route53-dyn-dns
+import:
+- package: github.com/goamz/goamz
+  subpackages:
+  - aws
+  - route53
