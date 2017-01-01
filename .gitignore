@@ -2,6 +2,7 @@
 *.o
 *.a
 *.so
+go-route53-dyn-dns
 
 # Folders
 _obj
