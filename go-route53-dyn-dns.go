@@ -33,7 +33,7 @@ func readConfigFile(configFileLocation string) (*config, error) {
 }
 
 func getPublicIP() ([]byte, error) {
-	res, err := http.Get("http://ip.nfriedly.com/text")
+	res, err := http.Get("http://checkip.amazonaws.com")
 	defer res.Body.Close()
 	if err != nil {
 		return nil, err
