@@ -1,4 +1,4 @@
-package: github.com/crimsonredmk/go-route53-dyn-dns
+package: github.com/mikestaszel/go-route53-dyn-dns
 import:
 - package: github.com/goamz/goamz
   subpackages:

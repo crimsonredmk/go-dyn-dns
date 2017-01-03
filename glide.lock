@@ -1,5 +1,5 @@
-hash: d0a1f5534ea0815608988155b53efbf5519e4e4fc52ebbff0fbb203fb01116a1
-updated: 2016-08-07T20:02:53.1836449-05:00
+hash: c3bc13d62aa09c5a5caba4925784c872bf84438bae04b39d84fbcf40d0785e13
+updated: 2017-01-02T18:48:51.305623153-06:00
 imports:
 - name: github.com/goamz/goamz
   version: 07a22c9653ddbb84a9c7feed933f1e0b945a07dc
