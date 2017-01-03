@@ -2,6 +2,8 @@
 
 A simple command to update AWS Route53 with a device's public IP address.
 
+[![Build Status](https://travis-ci.org/mikestaszel/go-route53-dyn-dns.svg?branch=master)](https://travis-ci.org/mikestaszel/go-route53-dyn-dns)
+
 # Uses #
 
 * On boot of an EC2 instance, update the A record of a (sub)domain to point to the new IP address.
