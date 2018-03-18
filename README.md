@@ -29,7 +29,7 @@ Create a configuration file at `/etc/go-route53-dyn-dns-conf.json` with contents
 
 # Running #
 
-Once your configuration file is ready, just run go-route53-dyn-dns. If successful, the following will be printed:
+Once your configuration file is ready, just run `go-route53-dyn-dns`. If successful, the following will be printed:
 
     Successfully mapped mysubdomain.mydomain.com to IP 55.44.33.22.
 
@@ -46,3 +46,7 @@ To run the script on boot once the network is up, create the file `/etc/init/go-
     end script
 
 Remember to replace the location of `go-route53-dyn-dns`.
+
+# Building #
+
+To build, clone the codebase and run `dep ensure`, then `go build`.
