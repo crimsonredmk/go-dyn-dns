@@ -50,7 +50,7 @@ func connectToRoute53(AWS_ACCESS_KEY string, AWS_SECRET_ACCESS_KEY string) (*rou
 }
 
 func updateRoute53Record(publicIP string, configMap *config, route53Client *route53.Route53) (*route53.ChangeResourceRecordSetsResponse, error) {
-	rrv := []route53.ResourceRecordValue{route53.ResourceRecordValue{Value: publicIP}}
+	rrv := []route53.ResourceRecordValue{{Value: publicIP}}
 	basicRRS := route53.BasicResourceRecordSet{Action: "UPSERT", Name: configMap.SUBDOMAIN, Type: "A", TTL: 60, Values: rrv}
 	RRSSlice := []route53.ResourceRecordSet{route53.ResourceRecordSet(basicRRS)}
 	createRequest := route53.ChangeResourceRecordSetsRequest{Changes: RRSSlice, Xmlns: "https://route53.amazonaws.com/doc/2013-04-01/"}
