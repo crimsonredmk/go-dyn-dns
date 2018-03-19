@@ -3,6 +3,7 @@
 *.a
 *.so
 go-route53-dyn-dns
+release/
 
 # Folders
 _obj
