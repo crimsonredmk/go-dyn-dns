@@ -3,22 +3,29 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:2d250f778a67dbd4bf7c0bde64ad80e19c9178d5a6a500caf13c415223227676"
   name = "github.com/goamz/goamz"
   packages = [
     "aws",
-    "route53"
+    "route53",
   ]
+  pruneopts = "UT"
   revision = "8b901b531db8fca1529b05bfa948605b01ca3ab0"
 
 [[projects]]
   branch = "master"
+  digest = "1:8f70510b21fd07eba5bd4e0f84d49d932ea74c8b0ea20a5807e9492cc819928c"
   name = "github.com/vaughan0/go-ini"
   packages = ["."]
+  pruneopts = "UT"
   revision = "a98ad7ee00ec53921f08832bc06ecf7fd600e6a1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "357d1d66f5031559c249d06215022e3c1721d488c7217bc40ca2936374882ed1"
+  input-imports = [
+    "github.com/goamz/goamz/aws",
+    "github.com/goamz/goamz/route53",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
